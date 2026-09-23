@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Designer's Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      :root {
+        --background: oklch(0.35 0.2 260);
+        --foreground: oklch(1 0 0);
+        --card: oklch(0.35 0.2 260 / 0.1);
+        --card-foreground: oklch(1 0 0);
+        --popover: oklch(0.35 0.2 260 / 0.8);
+        --popover-foreground: oklch(1 0 0);
+        --primary: oklch(1 0 0);
+        --primary-foreground: oklch(0.35 0.2 260);
+        --secondary: oklch(0.35 0.2 260);
+        --secondary-foreground: oklch(1 0 0);
+        --muted: oklch(1 0 0 / 0.2);
+        --muted-foreground: oklch(0.8 0 0);
+        --accent: oklch(0.35 0.2 260);
+        --accent-foreground: oklch(1 0 0);
+        --destructive: oklch(0.6 0.2 25);
+        --destructive-foreground: oklch(1 0 0);
+        --border: oklch(1 0 0 / 0.1);
+        --input: oklch(1 0 0 / 0.05);
+        --ring: oklch(0.35 0.2 260 / 0.5);
+        --chart-1: oklch(0.35 0.2 260);
+        --chart-2: oklch(0.8 0.15 85);
+        --chart-3: oklch(0.7 0.2 140);
+        --chart-4: oklch(0.7 0.2 240);
+        --chart-5: oklch(0.6 0.25 300);
+        --radius: 0.5rem;
+        --sidebar: oklch(0.35 0.2 260 / 0.9);
+        --sidebar-foreground: oklch(1 0 0);
+        --sidebar-primary: oklch(0.35 0.2 260);
+        --sidebar-primary-foreground: oklch(1 0 0);
+        --sidebar-accent: oklch(0.35 0.2 260);
+        --sidebar-accent-foreground: oklch(1 0 0);
+        --sidebar-border: oklch(1 0 0 / 0.2);
+        --sidebar-ring: oklch(1 0 0 / 0.3);
+        --font-geist-sans: "Geist Sans", sans-serif;
+        --font-geist-mono: "Geist Mono", monospace;
+      }
+      .dark {
+        --background: oklch(0.35 0.2 260);
+        --foreground: oklch(1 0 0);
+        --card: oklch(0.35 0.2 260 / 0.1);
+        --card-foreground: oklch(1 0 0);
+        --popover: oklch(0.35 0.2 260 / 0.8);
+        --popover-foreground: oklch(1 0 0);
+        --primary: oklch(1 0 0);
+        --primary-foreground: oklch(0.35 0.2 260);
+        --secondary: oklch(0.35 0.2 260);
+        --secondary-foreground: oklch(1 0 0);
+        --muted: oklch(1 0 0 / 0.2);
+        --muted-foreground: oklch(0.8 0 0);
+        --accent: oklch(0.35 0.2 260);
+        --accent-foreground: oklch(1 0 0);
+        --destructive: oklch(0.6 0.2 25);
+        --destructive-foreground: oklch(1 0 0);
+        --border: oklch(1 0 0 / 0.1);
+        --input: oklch(1 0 0 / 0.05);
+        --ring: oklch(0.35 0.2 260 / 0.5);
+        --chart-1: oklch(0.35 0.2 260);
+        --chart-2: oklch(0.8 0.15 85);
+        --chart-3: oklch(0.7 0.2 140);
+        --chart-4: oklch(0.7 0.2 240);
+        --chart-5: oklch(0.6 0.25 300);
+        --sidebar: oklch(0.35 0.2 260 / 0.9);
+        --sidebar-foreground: oklch(1 0 0);
+        --sidebar-primary: oklch(0.35 0.2 260);
+        --sidebar-primary-foreground: oklch(1 0 0);
+        --sidebar-accent: oklch(0.35 0.2 260);
+        --sidebar-accent-foreground: oklch(1 0 0);
+        --sidebar-border: oklch(1 0 0 / 0.2);
+        --sidebar-ring: oklch(1 0 0 / 0.3);
+      }
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        background-color: #002FA7;
+        color: #fff;
+        overflow-x: hidden;
+        cursor: none; /* Hide default cursor */
+      }
+      
+      .font-display {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      
+      .font-serif {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      .font-mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      /* Hide scrollbar */
+      ::-webkit-scrollbar { width: 0px; background: transparent; }
+
+      .perspective-1000 { perspective: 1000px; }
+      .transform-style-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+      
+      /* Blend Mode for Text overlaying Card */
+      .mix-blend-difference { mix-blend-mode: difference; }
+      
+      /* Text Outline Effect */
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+        color: transparent;
+      }
+      
+      .text-outline-dark {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+        color: transparent;
+      }
+
+      /* Floating Animation */
+      @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-20px) rotate(0.8deg); }
+        66% { transform: translateY(10px) rotate(-0.8deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      .animate-float { animation: float 8s ease-in-out infinite; }
+      
+      /* Pulse Animation */
+      @keyframes pulse-light {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.9); }
+      }
+      .animate-pulse-light { animation: pulse-light 2.5s ease-in-out infinite; }
+
+      /* Glitch Shake Animation */
+      @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+      .animate-shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+
+      /* PERCEPTION SHIFT: Simulates the eye refocusing / reality snapping */
+      @keyframes perception-snap {
+        0% { filter: blur(0px) contrast(100%); transform: scale(1); }
+        30% { filter: blur(6px) contrast(250%) grayscale(100%); transform: scale(1.05); } 
+        100% { filter: blur(0px) contrast(100%) grayscale(0%); transform: scale(1); }
+      }
+      .animate-perception { 
+        animation: perception-snap 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; 
+        will-change: filter, transform;
+      }
+
+      /* Infinite Scroll Animation for Software Ticker */
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-scroll {
+        animation: scroll 30s linear infinite;
+      }
+
+      /* --- CUSTOM CURSOR --- */
+      .custom-cursor {
+        pointer-events: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 20px; 
+        height: 20px;
+        background-color: transparent;
+        border: 2.5px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* Light black outline */
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
+                    height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                    background-color 0.3s,
+                    border-color 0.3s,
+                    border-width 0.3s;
+        z-index: 9999;
+      }
+      
+      .custom-cursor.hovered {
+        width: 50px; 
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.02);
+        border-color: #ffffff;
+        border-width: 2.5px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3); /* Slightly stronger outline on hover */
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes fadeInUpFull {
+        from { opacity: 0; transform: translateY(100vh); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up-full { animation: fadeInUpFull 2.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+      @keyframes shine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+      }
+      .animate-shine { animation: shine 3s infinite; }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up { animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 5s linear infinite;
+      }
+
+      /* --- CINEMATIC VIGNETTE EFFECT --- */
+    </style>
+    <script>
+      // Suppression proactive des erreurs MetaMask/Web3 injectées par les extensions
+      window.addEventListener('error', function(e) {
+        if (e.message && (e.message.includes('MetaMask') || e.message.includes('ethereum') || e.message.includes('web3'))) {
+          e.stopImmediatePropagation();
+          return true;
+        }
+      }, true);
+
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && e.reason.message && (e.reason.message.includes('MetaMask') || e.reason.message.includes('ethereum'))) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          return true;
+        }
+      });
+
+      // Désactivation de l'injection ethereum si elle cause des erreurs
+      Object.defineProperty(window, 'ethereum', {
+        get() { return undefined; },
+        set() { /* ignore extension attempts to inject */ },
+        configurable: false
+      });
+    </script>
+
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
